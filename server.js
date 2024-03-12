@@ -45,23 +45,15 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('Books', bookSchema)
 
-// home
 app.get('/', async (req, res) => {
     const books = await bookModel.find()
     res.render('./pages/home', { books: books })
 })
 
-// // retrive Data
-// app.get('/', async (req, res) => {
-
-// })
-
-// add data
 app.get('/addbook', (req, res) => {
     res.render('./pages/addbook')
 })
 
-// post data
 app.post('/addbook', async (req, res) => {
     const book = req.body;
 
@@ -71,15 +63,12 @@ app.post('/addbook', async (req, res) => {
     res.redirect('/')
 })
 
-
-// deleteData
 app.get('/deleteBook/:id', async (req, res) => {
     const userId = req.params.id;
     var result = await bookModel.deleteOne(({ _id: userId }))
     res.redirect('/')
 })
 
-// edit Data
 app.get('/editBook/:id', async (req, res) => {
     const userId = req.params.id;
 
@@ -88,7 +77,6 @@ app.get('/editBook/:id', async (req, res) => {
     res.render('./pages/editbook', { book });
 })
 
-// post Data
 app.post('/editBook/:id', async (req, res) => {
     const userId = req.params.id;
     const updatedBookData = req.body;
@@ -98,7 +86,6 @@ app.post('/editBook/:id', async (req, res) => {
     res.redirect('/');
 })
 
-// port Listen at
 app.listen(3000, () => {
-    console.log('Server Start');
+    console.log('Server Start at 3000');
 })
