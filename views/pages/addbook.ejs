@@ -1,0 +1,96 @@
+<%- include('../partials/header') %>
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Add Book</h3>
+                        <form class="requires-validation" method="post" novalidate>
+
+                            <div class="col-md-5">
+                                <input class="form-control" type="number" name="bookid" placeholder="ID :" required>
+                                <div class="valid-feedback">ID field is valid!</div>
+                                <div class="invalid-feedback">ID field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="title" placeholder="Book Title" required>
+                                <div class="valid-feedback">Title field is valid!</div>
+                                <div class="invalid-feedback">Title field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <select class="form-select mt-3" name="booktype" required>
+                                    <option selected disabled value="">--Select Genres--</option>
+                                    <option value="Novels">Novels</option>
+                                    <option value="Short Stories">Short Stories</option>
+                                    <option value="History">History</option>
+                                    <option value="Science and Nature">Science and Nature</option>
+                                    <option value="Books on Coding">Books on Coding</option>
+                                    <option value="Classic Poetry">Classic Poetry</option>
+                                    <option value="Tech Magazines">Tech Magazines</option>
+                                    <option value="Food Magazines">Food Magazines</option>
+                                    <option value="Fashion and Lifestyle Magazines">Fashion and Lifestyle Magazines
+                                    </option>
+                                </select>
+                                <div class="valid-feedback">You selected a Genres!</div>
+                                <div class="invalid-feedback">Please select a Genres!</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-6 pe-2">
+                                    <input class="form-control mt-3" type="number" name="stock"
+                                        placeholder="Available Quantity" required>
+                                    <div class="valid-feedback">Quantity field is valid!</div>
+                                    <div class="invalid-feedback">Quantity field cannot be blank!</div>
+                                </div>
+                                <div class="col-md-6 ps-2">
+                                    <input class="form-control mt-3" type="number" name="price" placeholder="Price :"
+                                        required>
+                                    <div class="valid-feedback">Price field is valid!</div>
+                                    <div class="invalid-feedback">Price field cannot be blank!</div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-6 pe-2">
+                                    <input class="form-control mt-3" type="date" name="publishdate" required>
+                                    <div class="valid-feedback">Date field is valid!</div>
+                                    <div class="invalid-feedback">Date field cannot be blank!</div>
+                                </div>
+                                <div class="col-md-6 ps-2">
+                                    <input class="form-control mt-3 px-3" type="text" name="author"
+                                        placeholder="Author :" required>
+                                    <div class="valid-feedback">Author field is valid!</div>
+                                    <div class="invalid-feedback">Author field cannot be blank!</div>
+                                </div>
+                            </div>
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" class="btn btn-primary">Add Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+        <script>
+            (function () {
+                'use strict'
+                const forms = document.querySelectorAll('.requires-validation')
+                Array.from(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+
+        </script>
